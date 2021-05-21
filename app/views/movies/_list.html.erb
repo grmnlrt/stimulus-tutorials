@@ -1,0 +1,15 @@
+<div data-refresh-list-target="list">
+  <% if params[:query].blank? %>
+    <h1 class="h3"><%= pluralize movies.count, 'movie' %> available</h1>
+  <% else %>
+    <h1 class="h3"><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h1>
+  <% end %>
+  <div class="movies">
+    <% movies.each do |movie| %>
+      <div class="movie-card">
+        <%= image_tag movie.image_url %>
+        <h2><%= movie.title %> <small>(<%= movie.year %>)</small></h2>
+      </div>
+    <% end %>
+  </div>
+</div>

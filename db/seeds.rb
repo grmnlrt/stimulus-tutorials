@@ -4,11 +4,14 @@ movies = [
   "batman",
   "superman",
   "spiderman",
-  "wonder woman"
+  "wonder woman",
+  "thor",
+  "black panther",
+  "avengers"
 ]
 
 movies.each do |movie|
-  omdb_endpoint = "http://www.omdbapi.com/?s=#{movie}&apikey=adf1f2d7"
+  omdb_endpoint = "http://www.omdbapi.com/?s=#{movie}&apikey=#{ENV['OMDB_API_KEY']}"
 
   serialized_data = URI.open(omdb_endpoint).read
   results = JSON.parse(serialized_data)['Search']
