@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+
+movies = [
+  "batman",
+  "superman",
+  "spiderman",
+  "wonder woman"
+]
+
+movies.each do |movie|
+  omdb_endpoint = "http://www.omdbapi.com/?s=#{movie}&apikey=adf1f2d7"
+
+  serialized_data = URI.open(omdb_endpoint).read
+  results = JSON.parse(serialized_data)['Search']
+
+  results.each do |result|
+    next if result['Type'] != 'movie' || result['Poster'] == "N/A"
+
+    Movie.create(title: result['Title'], year: result['Year'].to_i, image_url: result['Poster'])
+  end
+end
