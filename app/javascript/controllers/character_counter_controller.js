@@ -8,7 +8,7 @@ export default class extends Controller {
     if (numberOfCharacters > 0) {
       this.counterTarget.innerHTML = numberOfCharacters;
     } else {
-      this.counterTarget.innerHTML = "0";
+      this.counterTarget.innerHTML = "";
     }
   }
 }
