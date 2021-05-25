@@ -1,10 +1,13 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
+      <h1>Character counter</h1>
       <div data-controller="character-counter">
-        <input class="form-control"
-               data-action="keyup->character-counter#updateCounter"></textarea>
-        <div data-character-counter-target="counter"></div>
+        <textarea rows="3"
+                  placeholder="Type something"
+                  class="form-control mb-2"
+                  data-action="keyup->character-counter#updateCounter"></textarea>
+        <i data-character-counter-target="counter"></i>
       </div>
     </div>
   </div>

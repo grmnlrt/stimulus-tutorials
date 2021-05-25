@@ -6,7 +6,7 @@ export default class extends Controller {
   updateCounter(event) {
     const numberOfCharacters = event.currentTarget.value.length;
     if (numberOfCharacters > 0) {
-      this.counterTarget.innerHTML = numberOfCharacters;
+      this.counterTarget.innerHTML = `${numberOfCharacters} characters`;
     } else {
       this.counterTarget.innerHTML = "";
     }
