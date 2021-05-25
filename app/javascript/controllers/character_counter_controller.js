@@ -1,10 +1,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["input", "counter"]
+  static targets = ["counter"]
 
-  updateCounter() {
-    const numberOfCharacters = this.inputTarget.value.length;
+  updateCounter(event) {
+    const numberOfCharacters = event.currentTarget.value.length;
     if (numberOfCharacters > 0) {
       this.counterTarget.innerHTML = numberOfCharacters;
     } else {
